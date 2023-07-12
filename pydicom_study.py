@@ -23,11 +23,12 @@ plt.title("original dicom file")
 plt.imshow(image, cmap = 'gray')
 
 
-# pydicom module로 window level 설정하기
-
+# Windowing 초기 설정
 window_center = 700
 window_width = 1400
 
+
+# apply voi lut module을 이용하여 windowing
 dcm.WindowCenter = window_center
 dcm.WindowWidth = window_width
 
@@ -39,9 +40,7 @@ plt.title('apply_voi_lut')
 plt.imshow(voi_lut_image, cmap = 'gray')
 plt.axis('off')
 
-# 직접 windowing 설정하여 normalization 해보기
-# 초기 WW / WL 설정
-
+# normalization을 위해 직접 windowing
 window_image = np.clip(image, window_center - (window_width / 2), window_center + (window_width / 2))
 
 plt.subplot(1,3,3)
