@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 import PIL
-from PIL import imageTK, Image
+from PIL import Image, ImageTk
 import pydicom
 import os
 import shutil
@@ -9,10 +9,11 @@ import numpy as np
 import tkinter.messagebox as mbox
 from pydicom.pixel_data_handlers.util import apply_modality_lut, apply_voi_lut
 
-excel_ext = r"*.xlsx *.xls *.csv"
+dcm_ext = r"*.dcm *.DCM"
+mp4_ext = r"*.mp4"
 
 def file_find(entry_filepath):
-    file = filedialog.askopenfilenames(filetypes = (("Excel file", excel_ext), ("all file", "*.*")), initialdir=r"C:\Users")
+    file = filedialog.askopenfilenames(filetypes = (("DCM file", dcm_ext), ("mp4 file", mp4_ext), ("all file", "*.*")), initialdir=r"C:\Users")
     entry_filepath.delete(0,'end')
     entry_filepath.insert('end', file[0])
 
